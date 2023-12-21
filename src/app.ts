@@ -1,5 +1,6 @@
 import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
+import { studentRoutes } from './app/modules/student/student.route';
 const app: Application = express();
 
 // perser
@@ -7,10 +8,11 @@ const app: Application = express();
 app.use(express.json());
 app.use(cors());
 
-app.get('/', (req: Request, res: Response) => {
-  const a = 10;
+/* Aplication Routes */
+app.use('/api/v1/students', studentRoutes);
 
-  res.send(a);
+app.get('/', (req: Request, res: Response) => {
+  res.send('Welcome to university portal');
 });
 
 export default app;
